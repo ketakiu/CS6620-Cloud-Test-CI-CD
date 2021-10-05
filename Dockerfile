@@ -2,15 +2,15 @@ FROM python:3.8-alpine
 
 MAINTAINER Srinaveen Desu
 
-COPY ./app/requirements.txt /app/requirements.txt
+COPY ./microservices/service1/app/requirements.txt /microservices/service1/app/requirements.txt
 
-WORKDIR /app
+WORKDIR /microservices/service1/app
 
 RUN apk add --update \
   && pip install --upgrade pip  \
   && pip install -r requirements.txt \
   && rm -rf /var/cache/apk/*
 
-COPY ./app /app
+COPY microservices/service1/app /app
 
 CMD python app.py
